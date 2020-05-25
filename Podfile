@@ -12,5 +12,10 @@ target 'At a stadium' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Storage'
-
+  pod 'SVProgressHUD','2.2.5'
+  pod 'CLImageEditor/AllTools','0.2.4'
+  pod 'YPImagePicker'
+  pod 'BATabBarController', '~> 2.0.0'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end

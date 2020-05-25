@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import Firebase
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    // SVProgressHUDをXcode11で実行するための環境調整コード
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        GMSServices.provideAPIKey("AIzaSyCHGvmTC_LY1CnTdg9TqKsikSz8eaUMzUA")
+        GMSPlacesClient.provideAPIKey("AIzaSyCHGvmTC_LY1CnTdg9TqKsikSz8eaUMzUA")
+        
+        FirebaseApp.configure()
         return true
     }
 
