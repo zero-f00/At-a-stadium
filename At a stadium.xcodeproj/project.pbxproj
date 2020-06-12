@@ -12,6 +12,10 @@
 		580EE342245FBDDB000E0F64 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580EE341245FBDDB000E0F64 /* PostData.swift */; };
 		580EE348246041CD000E0F64 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580EE347246041CD000E0F64 /* PostViewController.swift */; };
 		580EE35024604924000E0F64 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580EE34F24604924000E0F64 /* SettingsTableViewController.swift */; };
+		5859D515248D2F3E002EAE20 /* SelectedMatchInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859D514248D2F3E002EAE20 /* SelectedMatchInfoData.swift */; };
+		5859EB7C2488012300B78FF9 /* MyPagePostedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859EB7A2488012300B78FF9 /* MyPagePostedTableViewCell.swift */; };
+		5859EB7D2488012300B78FF9 /* MyPagePostedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5859EB7B2488012300B78FF9 /* MyPagePostedTableViewCell.xib */; };
+		5859EB802488036500B78FF9 /* MyPagePostedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859EB7F2488036500B78FF9 /* MyPagePostedViewController.swift */; };
 		585AFB8B245EC6BD00A3A7C6 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585AFB8A245EC6BD00A3A7C6 /* AlertViewController.swift */; };
 		585AFB8D245EEB4800A3A7C6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585AFB8C245EEB4800A3A7C6 /* TabBarController.swift */; };
 		585AFB91245EFA2200A3A7C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 585AFB90245EFA2200A3A7C6 /* GoogleService-Info.plist */; };
@@ -30,6 +34,7 @@
 		5863A79924644DED00592DCD /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863A79724644DED00592DCD /* PostTableViewCell.swift */; };
 		5863A79A24644DED00592DCD /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5863A79824644DED00592DCD /* PostTableViewCell.xib */; };
 		58674A672467167100FA34F0 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58674A662467167100FA34F0 /* Date.swift */; };
+		587A8EDA249372B200FF7F23 /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587A8ED9249372B200FF7F23 /* Date+Ex.swift */; };
 		58981A952462FE4F00901217 /* TwitterActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58981A942462FE4F00901217 /* TwitterActivity.swift */; };
 		58B0E902246AD4690066749D /* MatchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0E901246AD4690066749D /* MatchData.swift */; };
 		58B0E90A246ADD4A0066749D /* addMatchDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B0E908246ADD4A0066749D /* addMatchDataTableViewCell.swift */; };
@@ -47,6 +52,10 @@
 		580EE341245FBDDB000E0F64 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		580EE347246041CD000E0F64 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		580EE34F24604924000E0F64 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		5859D514248D2F3E002EAE20 /* SelectedMatchInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMatchInfoData.swift; sourceTree = "<group>"; };
+		5859EB7A2488012300B78FF9 /* MyPagePostedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePostedTableViewCell.swift; sourceTree = "<group>"; };
+		5859EB7B2488012300B78FF9 /* MyPagePostedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPagePostedTableViewCell.xib; sourceTree = "<group>"; };
+		5859EB7F2488036500B78FF9 /* MyPagePostedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePostedViewController.swift; sourceTree = "<group>"; };
 		585AFB8A245EC6BD00A3A7C6 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		585AFB8C245EEB4800A3A7C6 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		585AFB90245EFA2200A3A7C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -67,6 +76,7 @@
 		5863A79724644DED00592DCD /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		5863A79824644DED00592DCD /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		58674A662467167100FA34F0 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		587A8ED9249372B200FF7F23 /* Date+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Ex.swift"; sourceTree = "<group>"; };
 		58981A942462FE4F00901217 /* TwitterActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterActivity.swift; sourceTree = "<group>"; };
 		58B0E901246AD4690066749D /* MatchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchData.swift; sourceTree = "<group>"; };
 		58B0E908246ADD4A0066749D /* addMatchDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addMatchDataTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,6 +134,7 @@
 				585CF960245E9E8600189144 /* SceneDelegate.swift */,
 				585CF964245E9E8600189144 /* Main.storyboard */,
 				585AFB8C245EEB4800A3A7C6 /* TabBarController.swift */,
+				587A8EDB24937ACA00FF7F23 /* Extension */,
 				58B0E906246ADCB30066749D /* Login */,
 				58DBAC7D2472BAFF009A140E /* Home */,
 				58B0E905246ADC6E0066749D /* Post */,
@@ -188,17 +199,30 @@
 			isa = PBXGroup;
 			children = (
 				585CF97C245EB70100189144 /* MyPageViewController.swift */,
+				5859EB7F2488036500B78FF9 /* MyPagePostedViewController.swift */,
+				5859EB7A2488012300B78FF9 /* MyPagePostedTableViewCell.swift */,
+				5859EB7B2488012300B78FF9 /* MyPagePostedTableViewCell.xib */,
 			);
 			path = Mypage;
+			sourceTree = "<group>";
+		};
+		587A8EDB24937ACA00FF7F23 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				587A8ED9249372B200FF7F23 /* Date+Ex.swift */,
+				58674A662467167100FA34F0 /* Date.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		58B0E905246ADC6E0066749D /* Post */ = {
 			isa = PBXGroup;
 			children = (
 				580EE341245FBDDB000E0F64 /* PostData.swift */,
+				5859D514248D2F3E002EAE20 /* SelectedMatchInfoData.swift */,
 				580EE347246041CD000E0F64 /* PostViewController.swift */,
-				5863A79824644DED00592DCD /* PostTableViewCell.xib */,
 				5863A79724644DED00592DCD /* PostTableViewCell.swift */,
+				5863A79824644DED00592DCD /* PostTableViewCell.xib */,
 				5862B1C724642EB300BDFE5D /* Const.swift */,
 				580EE34F24604924000E0F64 /* SettingsTableViewController.swift */,
 				5861632B247C277C002953DF /* AddMatchData */,
@@ -229,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				585CF972245EB5F900189144 /* HomeViewController.swift */,
-				58674A662467167100FA34F0 /* Date.swift */,
 				585CF97E245EB72D00189144 /* CommentViewController.swift */,
 			);
 			path = Home;
@@ -310,6 +333,7 @@
 				585AFB91245EFA2200A3A7C6 /* GoogleService-Info.plist in Resources */,
 				585CF968245E9E8800189144 /* Assets.xcassets in Resources */,
 				585CF966245E9E8600189144 /* Main.storyboard in Resources */,
+				5859EB7D2488012300B78FF9 /* MyPagePostedTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				580EE348246041CD000E0F64 /* PostViewController.swift in Sources */,
+				5859EB7C2488012300B78FF9 /* MyPagePostedTableViewCell.swift in Sources */,
 				5861632A247A609C002953DF /* addMatchDetailViewController.swift in Sources */,
 				580EE33E245FB351000E0F64 /* CreateViewController.swift in Sources */,
 				580EE342245FBDDB000E0F64 /* PostData.swift in Sources */,
@@ -393,7 +418,10 @@
 				585CF97D245EB70100189144 /* MyPageViewController.swift in Sources */,
 				585AFB8D245EEB4800A3A7C6 /* TabBarController.swift in Sources */,
 				585AFB8B245EC6BD00A3A7C6 /* AlertViewController.swift in Sources */,
+				5859D515248D2F3E002EAE20 /* SelectedMatchInfoData.swift in Sources */,
 				585C39FB2471662100EAEA52 /* GoogleMapsViewController.swift in Sources */,
+				5859EB802488036500B78FF9 /* MyPagePostedViewController.swift in Sources */,
+				587A8EDA249372B200FF7F23 /* Date+Ex.swift in Sources */,
 				585CF961245E9E8600189144 /* SceneDelegate.swift in Sources */,
 				58981A952462FE4F00901217 /* TwitterActivity.swift in Sources */,
 				58B0E90A246ADD4A0066749D /* addMatchDataTableViewCell.swift in Sources */,

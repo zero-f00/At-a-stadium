@@ -233,8 +233,6 @@
             </connections>
             <point key="canvasLocation" x="69.375" y="-1.25"/>
         </tableViewCell>
-        <tapGestureRecognizer id="Z4d-sw-v2a"/>
-        <tapGestureRecognizer id="JkO-3q-OjF"/>
     </objects>
     <resources>
         <image name="Clap" width="40" height="40"/>
