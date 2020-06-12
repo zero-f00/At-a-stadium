@@ -10,6 +10,7 @@ import UIKit
 import YPImagePicker
 import Firebase
 import SVProgressHUD
+import FirebaseUI
 
 
 class PostViewController: UIViewController {
@@ -25,6 +26,18 @@ class PostViewController: UIViewController {
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var postButton: UIBarButtonItem!
     
+    @IBOutlet weak var matchInfoAreaLabel: UILabel!
+    @IBOutlet weak var categorySectionLabel: UILabel!
+    
+    
+    @IBOutlet weak var matchInfoUIView: UIView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var homeTeamLabel: UILabel!
+    @IBOutlet weak var awayTeamLabel: UILabel!
+    @IBOutlet weak var stadiumImageView: UIImageView!
+    
+    
+    var matchInfo: MatchData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +53,68 @@ class PostViewController: UIViewController {
         config.wordings.next = "OK"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        print("PostVC-viewWillAppearが呼ばれました。")
+        print("DEBUG_PRINT PostVCで値は\(String(describing: matchInfo))です。")
+        // 試合情報の追加がされているかどうかを判定する
+        
+        if matchInfo != nil {
+            print("PostVCで呼ばれています。")
+            
+            postButton.isEnabled = true
+            
+            // 非表示にする
+            matchInfoAreaLabel.isHidden = true
+            matchInfoUIView.isHidden = false
+            
+            
+            // カテゴリの表示 セクションの表示
+            self.categorySectionLabel.text = "\(matchInfo!.category!) \(matchInfo!.section!)"
+            print("DEBUG_PRINT \(String(describing: self.categorySectionLabel.text))")
+
+            // KICKOFFの表示
+            self.dateLabel.text = ""
+            if let date = matchInfo!.date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd HH:mm"
+                let dateAndTime = date.formattedDateWith(style: .longDateAndTime)
+                self.dateLabel.text = "KICKOFF - \(dateAndTime)"
+            }
+            
+            print("DEBUG_PRINT \(String(describing: self.dateLabel.text))")
+
+            // ホームチームの表示
+            self.homeTeamLabel.text = matchInfo!.homeTeam!
+            print("DEBUG_PRINT \(String(describing: self.homeTeamLabel.text))")
+
+            // アウェイチームの表示
+            self.awayTeamLabel.text = matchInfo!.awayTeam!
+            print("DEBUG_PRINT \(String(describing: self.awayTeamLabel.text))")
+
+            //        // スタジアムの表示
+            //        self.stadiumLabel.text = "KICKOFF - \(matchInfoDetail!stadium!)"
+            //        print("DEBUG_PRINT \(String(describing: self.stadiumLabel.text))")
+
+            setMatchData(matchInfo!)
+            
+            
+        } else {
+            matchInfoAreaLabel.isHidden = false
+            matchInfoUIView.isHidden = true
+        }
+        
+    }
+    
+    func setMatchData(_ matchData: MatchData) {
+        // スタジアム画像の表示
+        stadiumImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        let imageRef = Storage.storage().reference().child(Const.stadiumImagePath).child(matchData.id + ".jpg")
+        stadiumImageView.sd_setImage(with: imageRef)
+        print("DEBUG_PRINT \(imageRef)")
+
+    }
+    
     @IBAction func backButton_Clicked(_ sender: Any) {
         caption.resignFirstResponder()
         self.dismiss(animated: true, completion: nil)
@@ -51,20 +126,35 @@ class PostViewController: UIViewController {
             SVProgressHUD.showError(withStatus:"画像の投稿は必須です。")
             postButton.isEnabled = false
             mastTapImage()
+        } else if matchInfo == nil {
+            SVProgressHUD.showError(withStatus:"試合情報の追加は必須です。")
+            postButton.isEnabled = false
         } else {
+            
             // キーボードを閉じる
             caption.resignFirstResponder()
             
             // 画像をJPEG形式に変換する
+            // postImage
             let imageData = image.jpegData(compressionQuality: 0.75)
+            
+            // stadiumImageView
+            let matchInfoImageData = stadiumImageView.image?.jpegData(compressionQuality: 0.75)
+            
+            
             // 画像と投稿データの保存場所を定義
             let postRef = Firestore.firestore().collection(Const.PostPath).document()
             let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
             
+            // 追加した試合情報と画像の保存場所を定義
+            let matchInfoPostRef = Firestore.firestore().collection(Const.MatchInfoPostPath).document()
+            let matchInfoImageRef = Storage.storage().reference().child(Const.SelectedMatchInfoImagePath).child(matchInfoPostRef.documentID + ".jpg")
+            
+            
             // HUDで投稿処理中の表示を開始
             SVProgressHUD.show()
             
-            // Storageに画像をアップロードする
+            // Storageに投稿内容の画像をアップロードする
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpeg"
             imageRef.putData(imageData!, metadata: metadata) { (metadata, error) in
@@ -86,6 +176,32 @@ class PostViewController: UIViewController {
                     "date": FieldValue.serverTimestamp(),
                 ] as [String : Any]
                 postRef.setData(postDic)
+                
+                
+                // StorageにStadium画像をアップロードする
+                let metadata = StorageMetadata()
+                metadata.contentType = "image/jpeg"
+                matchInfoImageRef.putData(matchInfoImageData!, metadata: metadata) { (metadata, error) in
+                    if error != nil {
+                        // 画像のアップロードに失敗
+                        print(error!)
+                        SVProgressHUD.showError(withStatus: "画像のアップロードに失敗しました。")
+                        
+                        // 投稿処理をキャンセル
+                        UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
+                        return
+                    }
+
+                    // FireStoreに投稿データを保存する
+                    let matchInfoPostDic = [
+                        "categorySection": self.categorySectionLabel.text!,
+                        "matchDate": self.dateLabel.text!,
+                        "homeTeam": self.homeTeamLabel.text!,
+                        "awayTeam": self.awayTeamLabel.text!,
+                        "date": FieldValue.serverTimestamp(),
+                    ] as [String : Any]
+                    matchInfoPostRef.setData(matchInfoPostDic)
+                }
                 
                 // HUDで投稿完了を表示
                 SVProgressHUD.showSuccess(withStatus: "投稿完了")

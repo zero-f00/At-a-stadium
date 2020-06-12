@@ -29,6 +29,8 @@ class MatchDataViewController: UIViewController, UITableViewDataSource, UITableV
         // カスタムセルを登録する
         let nib = UINib(nibName: "addMatchDataTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "MatchCell")
+        
+        tableView.rowHeight = 157
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +92,7 @@ class MatchDataViewController: UIViewController, UITableViewDataSource, UITableV
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let AddMatchDetailViewController = segue.destination as! addMatchDetailViewController
         AddMatchDetailViewController.matchInfoDetail = matchInfo
+        print("DEBUG_PRINT \(String(describing: matchInfo))")
     }
 
 }

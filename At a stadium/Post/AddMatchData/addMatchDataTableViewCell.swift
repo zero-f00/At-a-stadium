@@ -43,8 +43,8 @@ class addMatchDataTableViewCell: UITableViewCell {
         if let date = matchData.date {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd HH:mm"
-            let dateString = formatter.string(from: date)
-            self.dateLabel.text = "KICKOFF - \(dateString)"
+            let dateAndTime = date.formattedDateWith(style: .longDateAndTime)
+            self.dateLabel.text = "KICKOFF - \(dateAndTime)"
         }
         
         // 対戦カードの表示

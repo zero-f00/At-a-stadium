@@ -18,6 +18,7 @@ class PostData: NSObject {
     var isLiked: Bool = false
     
     init(document: QueryDocumentSnapshot) {
+        
         self.id = document.documentID
         
         let postDic = document.data()
