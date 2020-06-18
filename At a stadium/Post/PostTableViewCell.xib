@@ -133,11 +133,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FC1-wi-OHG" userLabel="addMatchInfoButton">
+                                <rect key="frame" x="0.0" y="0.0" width="426" height="250"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="MnG-L6-t3O" firstAttribute="top" secondItem="CaX-wp-v8l" secondAttribute="top" constant="81" id="1Bm-Va-93u"/>
+                            <constraint firstAttribute="trailing" secondItem="FC1-wi-OHG" secondAttribute="trailing" id="4ju-ux-ehV"/>
                             <constraint firstItem="kcT-cH-ZOh" firstAttribute="top" secondItem="MnG-L6-t3O" secondAttribute="bottom" constant="20" id="5PZ-WN-5GT"/>
                             <constraint firstAttribute="trailing" secondItem="NAr-44-Pal" secondAttribute="trailing" constant="20" id="5yT-SH-lsH"/>
                             <constraint firstItem="0Rs-u0-DGa" firstAttribute="leading" secondItem="9C8-Sn-Aqf" secondAttribute="trailing" constant="10" id="6PP-KW-7EI"/>
@@ -155,9 +159,12 @@
                             <constraint firstItem="NAr-44-Pal" firstAttribute="top" secondItem="CaX-wp-v8l" secondAttribute="top" constant="10" id="Xb4-z9-2U6"/>
                             <constraint firstItem="NAr-44-Pal" firstAttribute="leading" secondItem="CaX-wp-v8l" secondAttribute="leading" constant="10" id="Xi4-8w-Exu"/>
                             <constraint firstAttribute="trailing" secondItem="fFY-14-8xp" secondAttribute="trailing" constant="10" id="YWx-nL-q9X"/>
+                            <constraint firstItem="FC1-wi-OHG" firstAttribute="leading" secondItem="CaX-wp-v8l" secondAttribute="leading" id="cBb-9S-OXd"/>
                             <constraint firstAttribute="trailing" secondItem="UU3-bR-83H" secondAttribute="trailing" constant="20" id="crJ-vg-yUh"/>
+                            <constraint firstAttribute="bottom" secondItem="FC1-wi-OHG" secondAttribute="bottom" id="fuJ-FQ-rwv"/>
                             <constraint firstItem="MnG-L6-t3O" firstAttribute="leading" secondItem="9C8-Sn-Aqf" secondAttribute="trailing" constant="10" id="g26-ef-1aN"/>
                             <constraint firstItem="MnG-L6-t3O" firstAttribute="top" secondItem="UU3-bR-83H" secondAttribute="bottom" constant="24.5" id="ipS-xi-P67"/>
+                            <constraint firstItem="FC1-wi-OHG" firstAttribute="top" secondItem="CaX-wp-v8l" secondAttribute="top" id="mrj-sO-Qv3"/>
                             <constraint firstItem="UU3-bR-83H" firstAttribute="leading" secondItem="CaX-wp-v8l" secondAttribute="leading" constant="10" id="uIJ-EH-Q3M"/>
                             <constraint firstAttribute="trailing" secondItem="MnG-L6-t3O" secondAttribute="trailing" constant="20" id="xkc-aD-Lbg"/>
                             <constraint firstAttribute="height" constant="250" id="y70-Jf-VP1"/>
@@ -214,6 +221,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addMatchInfoButton" destination="FC1-wi-OHG" id="FFN-mB-9nc"/>
                 <outlet property="addMatchInfoView" destination="CaX-wp-v8l" id="SHJ-q6-mK1"/>
                 <outlet property="captionLabel" destination="Ip8-e1-KZi" id="9MX-K8-XmS"/>
                 <outlet property="commentButton" destination="abr-Iu-Rzh" id="6se-uM-zeF"/>

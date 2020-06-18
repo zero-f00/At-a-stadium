@@ -16,8 +16,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // 変数データを格納する配列（投稿内容用）
     var postArray: [PostData] = []
     
-    // 変数データを格納する配列（投稿内容用）
+    // 変数データを格納する配列（試合情報用）
     var selectedMatchInfoDataArray: [SelectedMatchInfoData] = []
+    
+    // RelatedHomeViewControllerに試合情報を表示させるための変数
+    var matchInfoToRelated: SelectedMatchInfoData?
     
     var listener: ListenerRegistration!
     
@@ -112,15 +115,35 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
         
         if indexPath.row < selectedMatchInfoDataArray.count {
             cell.setSelectedMatchInfoData(selectedMatchInfoDataArray[indexPath.row])
         }
-        
+        cell.addMatchInfoButton.addTarget(self, action: #selector(didTapAddMatchInfo), for: .touchUpInside)
         return cell
+    }
+    
+    @objc func didTapAddMatchInfo(_ sender: UIButton, forEvent event: UIEvent) {
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
         
+        matchInfoToRelated = selectedMatchInfoDataArray[indexPath!.row]
+        
+        // viewがタップされた時のアクション
+        self.performSegue(withIdentifier: "toRelatedPosts", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let relatedHomeViewController = segue.destination as! RelatedHomeViewController
+        relatedHomeViewController.matchInfoFromHomeVC = matchInfoToRelated
+        
+        print("DEBUG_PRINT matchInfoFromHomeVCに値を渡す \(String(describing: matchInfoToRelated))")
+        
+        self.dismiss(animated: true, completion: nil)
     }
 
 }

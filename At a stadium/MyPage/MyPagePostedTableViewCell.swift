@@ -1,15 +1,15 @@
 //
-//  PostTableViewCell.swift
+//  MyPagePostedTableViewCell.swift
 //  At a stadium
 //
-//  Created by Yuto Masamura on 2020/05/07.
+//  Created by Yuto Masamura on 2020/06/04.
 //  Copyright © 2020 Yuto Masamura. All rights reserved.
 //
 
 import UIKit
 import FirebaseUI
 
-class PostTableViewCell: UITableViewCell {
+class MyPagePostedTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var displayName: UILabel!
@@ -21,8 +21,6 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
     
-    
-    @IBOutlet weak var addMatchInfoButton: UIButton!
     @IBOutlet weak var addMatchInfoView: UIView!
     @IBOutlet weak var matchInfoCategory: UILabel!
     @IBOutlet weak var matchInfoDate: UILabel!
@@ -38,16 +36,19 @@ class PostTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        let view = UIView()
+        view.frame = CGRect(x : 10, y : 0, width : 375, height : 245)
         
         // 枠線の色
-        addMatchInfoView.layer.borderColor = UIColor.red.cgColor
+        view.layer.borderColor = UIColor.red.cgColor
         // 枠線の太さ
-        addMatchInfoView.layer.borderWidth = 3
+        view.layer.borderWidth = 3
         // 角丸
-        addMatchInfoView.layer.cornerRadius = 5
-        addMatchInfoView.layer.masksToBounds = true
+        view.layer.cornerRadius = 5
+        // 角丸にした部分のはみ出し許可 false:はみ出し可 true:はみ出し不可
+        view.layer.masksToBounds = true
+        self.addMatchInfoView.addSubview(view)
     }
     
     // PostDataの内容をセルに表示
@@ -79,27 +80,8 @@ class PostTableViewCell: UITableViewCell {
             self.likeButton.setImage(buttonImage, for: .normal)
         }
         
-    }
-    
-    
-    // SelectedMatchInfoの内容をaddMatchInfoViewに表示
-    func setSelectedMatchInfoData(_ selectedMatchInfoData: SelectedMatchInfoData) {
-        // カテゴリーとセクションの表示
-        self.matchInfoCategory.text = "\(selectedMatchInfoData.categorySection!)"
+        //self.matchInfoCategory.text = postData.matchInfo.category
         
-        // 日付の表示
-        self.matchInfoDate.text = "\(selectedMatchInfoData.matchDate!)"
-        
-        // ホームチームの表示
-        self.matchInfoHomeT.text = "\(selectedMatchInfoData.homeTeam!)"
-        
-        // アウェイチームの表示
-        self.matchInfoAwayT.text = "\(selectedMatchInfoData.awayTeam!)"
-        
-        // スタジアム画像の表示
-        matchInfoStadiumImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        let imageRef = Storage.storage().reference().child(Const.SelectedMatchInfoImagePath).child(selectedMatchInfoData.id + ".jpg")
-        matchInfoStadiumImageView.sd_setImage(with: imageRef)
     }
     
 }
