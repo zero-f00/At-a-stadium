@@ -772,7 +772,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZf-BM-qqx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8820" y="1766"/>
+            <point key="canvasLocation" x="-8824" y="1784"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="3Y8-ko-GaK">
@@ -1349,13 +1349,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIj-TW-ONG" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="907"/>
                                         <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="STG-qi-FaP">
-                                                <rect key="frame" x="0.0" y="277" width="320" height="628"/>
+                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STG-qi-FaP">
+                                                <rect key="frame" x="0.0" y="458" width="320" height="447"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <segue destination="hrU-yf-Ab8" kind="embed" id="BLD-vc-3wU"/>
                                                 </connections>
                                             </containerView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mox-ce-WG8">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mox-ce-WG8">
                                                 <rect key="frame" x="120" y="10.5" width="80" height="79"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="VZE-Ck-X8p"/>
@@ -1363,61 +1364,42 @@
                                                     <constraint firstAttribute="height" constant="80" id="z1L-Am-VTu"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テストマン" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXN-uv-678">
-                                                <rect key="frame" x="5" y="98" width="310" height="21.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="テストマン" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXN-uv-678">
+                                                <rect key="frame" x="5" y="96" width="310" height="21.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="北海道コンサドーレ札幌をサポートしています。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7z-B6-53h">
-                                                <rect key="frame" x="5" y="125.5" width="310" height="13.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="北海道コンサドーレ札幌をサポートしています。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7z-B6-53h">
+                                                <rect key="frame" x="5" y="123.5" width="310" height="13.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自己紹介コメントコメントコメント" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc0-ue-f3I">
-                                                <rect key="frame" x="78" y="149" width="164" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="自己紹介コメントコメントコメント" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc0-ue-f3I">
+                                                <rect key="frame" x="78" y="147" width="164" height="12"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ss7-M2-SJ4">
-                                                <rect key="frame" x="5" y="181" width="310" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ss7-M2-SJ4">
+                                                <rect key="frame" x="3" y="335" width="310" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="プロフィール編集" backgroundImage="btn"/>
                                                 <connections>
                                                     <action selector="toEditAccount:" destination="d62-pk-bXI" eventType="touchUpInside" id="79i-GQ-LI7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbt-IF-S4O">
-                                                <rect key="frame" x="5" y="229" width="310" height="40"/>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbt-IF-S4O">
+                                                <rect key="frame" x="3" y="383" width="310" height="40"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="アルバム" backgroundImage="btn"/>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstItem="ss7-M2-SJ4" firstAttribute="top" secondItem="hc0-ue-f3I" secondAttribute="bottom" constant="20" id="0Ho-Pq-NTc"/>
-                                            <constraint firstItem="w7z-B6-53h" firstAttribute="top" secondItem="fXN-uv-678" secondAttribute="bottom" constant="6" id="34k-F9-5Dx"/>
-                                            <constraint firstAttribute="trailing" secondItem="kbt-IF-S4O" secondAttribute="trailing" constant="5" id="5rQ-PY-ZnG"/>
-                                            <constraint firstAttribute="trailing" secondItem="STG-qi-FaP" secondAttribute="trailing" id="830-ps-thf"/>
-                                            <constraint firstItem="fXN-uv-678" firstAttribute="centerX" secondItem="VIj-TW-ONG" secondAttribute="centerX" id="Dbs-yu-i4R"/>
-                                            <constraint firstItem="w7z-B6-53h" firstAttribute="leading" secondItem="VIj-TW-ONG" secondAttribute="leading" constant="5" id="F6y-ip-j3I"/>
-                                            <constraint firstItem="STG-qi-FaP" firstAttribute="leading" secondItem="VIj-TW-ONG" secondAttribute="leading" id="KY7-1i-G0E"/>
-                                            <constraint firstItem="kbt-IF-S4O" firstAttribute="leading" secondItem="VIj-TW-ONG" secondAttribute="leading" constant="5" id="MqN-it-khw"/>
-                                            <constraint firstItem="hc0-ue-f3I" firstAttribute="centerX" secondItem="w7z-B6-53h" secondAttribute="centerX" id="MtE-PY-FwG"/>
-                                            <constraint firstItem="mox-ce-WG8" firstAttribute="centerX" secondItem="VIj-TW-ONG" secondAttribute="centerX" id="VaH-BS-1Lh"/>
-                                            <constraint firstItem="hc0-ue-f3I" firstAttribute="centerX" secondItem="VIj-TW-ONG" secondAttribute="centerX" id="XFn-tl-RaA"/>
-                                            <constraint firstItem="fXN-uv-678" firstAttribute="top" secondItem="mox-ce-WG8" secondAttribute="bottom" constant="8" id="deL-zB-Q1u"/>
-                                            <constraint firstAttribute="bottom" secondItem="STG-qi-FaP" secondAttribute="bottom" constant="2" id="dwa-oW-9bN"/>
-                                            <constraint firstItem="STG-qi-FaP" firstAttribute="top" secondItem="VIj-TW-ONG" secondAttribute="top" constant="277" id="j51-ln-dxZ"/>
-                                            <constraint firstItem="ss7-M2-SJ4" firstAttribute="leading" secondItem="VIj-TW-ONG" secondAttribute="leading" constant="5" id="joA-vD-Aea"/>
-                                            <constraint firstItem="mox-ce-WG8" firstAttribute="top" secondItem="VIj-TW-ONG" secondAttribute="top" constant="10" id="o94-vT-Uvy"/>
-                                            <constraint firstItem="hc0-ue-f3I" firstAttribute="top" secondItem="w7z-B6-53h" secondAttribute="bottom" constant="10" id="ose-kJ-YDy"/>
-                                            <constraint firstItem="STG-qi-FaP" firstAttribute="top" secondItem="kbt-IF-S4O" secondAttribute="bottom" constant="8" id="qgm-yl-sxR"/>
-                                            <constraint firstAttribute="trailing" secondItem="fXN-uv-678" secondAttribute="trailing" constant="5" id="ry6-Qn-wwk"/>
-                                            <constraint firstItem="STG-qi-FaP" firstAttribute="leading" secondItem="VIj-TW-ONG" secondAttribute="leading" id="scC-g8-rmD"/>
-                                            <constraint firstAttribute="trailing" secondItem="ss7-M2-SJ4" secondAttribute="trailing" constant="5" id="vUq-QX-0vo"/>
-                                            <constraint firstItem="kbt-IF-S4O" firstAttribute="top" secondItem="ss7-M2-SJ4" secondAttribute="bottom" constant="8" id="zXn-9H-1OA"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1446,7 +1428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8e-LW-5BM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1326" y="1138"/>
+            <point key="canvasLocation" x="1325.625" y="1137.6760563380283"/>
         </scene>
         <!--My Page Edit View Controller-->
         <scene sceneID="sZP-bL-fD6">
@@ -1457,21 +1439,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="weM-s2-g0p">
-                                <rect key="frame" x="120" y="57.5" width="80" height="79"/>
+                                <rect key="frame" x="120" y="45.5" width="80" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="4dK-WB-kbB"/>
                                     <constraint firstAttribute="height" constant="80" id="bE6-ka-3be"/>
                                     <constraint firstAttribute="width" secondItem="weM-s2-g0p" secondAttribute="height" multiplier="1:1" id="hnE-Fv-9nx"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="srB-j0-nI2">
-                                <rect key="frame" x="26" y="178" width="275" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="自己紹介" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2Cb-fm-C9W">
-                                <rect key="frame" x="38" y="232" width="240" height="128"/>
+                                <rect key="frame" x="29" y="292" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1480,6 +1456,25 @@
                             </textView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAZ-8z-2OB">
                                 <rect key="frame" x="28" y="406" width="275" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYN-LN-YW1">
+                                <rect key="frame" x="26" y="240" width="275" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="プロフィール写真" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ES3-Oy-9fr">
+                                <rect key="frame" x="13" y="18" width="139" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="srB-j0-nI2">
+                                <rect key="frame" x="30" y="184" width="275" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1726,7 +1721,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Go4-Ln-aD2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8055" y="1648"/>
+            <point key="canvasLocation" x="-7997" y="1658"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uZO-V9-NEJ">
@@ -1752,11 +1747,11 @@
             <objects>
                 <viewController id="hrU-yf-Ab8" customClass="MyPagePostedViewController" customModule="At_a_stadium" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QWz-51-nkK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="628"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="447"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sbN-w8-vkj">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="628"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="447"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -1799,6 +1794,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FL1-dR-Ahj"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Viu-QK-Gzx" id="VUH-QI-sOQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AMA-Dq-Ve5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

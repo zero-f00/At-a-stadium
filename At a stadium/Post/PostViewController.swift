@@ -138,18 +138,9 @@ class PostViewController: UIViewController {
             // postImage
             let imageData = image.jpegData(compressionQuality: 0.75)
             
-            // stadiumImageView
-            let matchInfoImageData = stadiumImageView.image?.jpegData(compressionQuality: 0.75)
-            
-            
             // 画像と投稿データの保存場所を定義
             let postRef = Firestore.firestore().collection(Const.PostPath).document()
             let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
-            
-            // 追加した試合情報と画像の保存場所を定義
-            let matchInfoPostRef = Firestore.firestore().collection(Const.MatchInfoPostPath).document()
-            let matchInfoImageRef = Storage.storage().reference().child(Const.SelectedMatchInfoImagePath).child(matchInfoPostRef.documentID + ".jpg")
-            
             
             // HUDで投稿処理中の表示を開始
             SVProgressHUD.show()
@@ -174,37 +165,22 @@ class PostViewController: UIViewController {
                     "name": name!,
                     "caption": self.caption.text!,
                     "date": FieldValue.serverTimestamp(),
+                    "matchInfoId": self.matchInfo!.id,
                 ] as [String : Any]
                 postRef.setData(postDic)
                 
                 
-                // StorageにStadium画像をアップロードする
-                let metadata = StorageMetadata()
-                metadata.contentType = "image/jpeg"
-                matchInfoImageRef.putData(matchInfoImageData!, metadata: metadata) { (metadata, error) in
-                    if error != nil {
-                        // 画像のアップロードに失敗
-                        print(error!)
-                        SVProgressHUD.showError(withStatus: "画像のアップロードに失敗しました。")
-                        
-                        // 投稿処理をキャンセル
-                        UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
-                        return
-                    }
-
-                    // FireStoreに投稿データを保存する
-                    let matchInfoPostDic = [
-                        "categorySection": self.categorySectionLabel.text!,
-                        "matchDate": self.dateLabel.text!,
-                        "homeTeam": self.homeTeamLabel.text!,
-                        "awayTeam": self.awayTeamLabel.text!,
-                        "date": FieldValue.serverTimestamp(),
-                    ] as [String : Any]
-                    matchInfoPostRef.setData(matchInfoPostDic)
-                }
+//                // matchCreateViewControllerで作成し、引き継いできた試合情報をHomeViewControllerに渡す
+//                // idから対象のデータを取得するため不要
+//                let navigationController = self.presentingViewController as! UINavigationController
+//
+//                let HomeViewController = navigationController.topViewController as! HomeViewController
+//                HomeViewController.matchInfo = self.matchInfo
                 
                 // HUDで投稿完了を表示
                 SVProgressHUD.showSuccess(withStatus: "投稿完了")
+                
+                
                 
                 // 投稿処理が完了したので先頭画面に戻る
                 UIApplication.shared.windows.first{ $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)

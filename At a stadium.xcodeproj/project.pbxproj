@@ -13,7 +13,6 @@
 		580EE348246041CD000E0F64 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580EE347246041CD000E0F64 /* PostViewController.swift */; };
 		580EE35024604924000E0F64 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580EE34F24604924000E0F64 /* SettingsTableViewController.swift */; };
 		585915DA249B9D0500FB6F1C /* MyPageEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585915D9249B9D0500FB6F1C /* MyPageEditViewController.swift */; };
-		5859D515248D2F3E002EAE20 /* SelectedMatchInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859D514248D2F3E002EAE20 /* SelectedMatchInfoData.swift */; };
 		5859EB7C2488012300B78FF9 /* MyPagePostedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859EB7A2488012300B78FF9 /* MyPagePostedTableViewCell.swift */; };
 		5859EB7D2488012300B78FF9 /* MyPagePostedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5859EB7B2488012300B78FF9 /* MyPagePostedTableViewCell.xib */; };
 		5859EB802488036500B78FF9 /* MyPagePostedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5859EB7F2488036500B78FF9 /* MyPagePostedViewController.swift */; };
@@ -57,7 +56,6 @@
 		580EE347246041CD000E0F64 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		580EE34F24604924000E0F64 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		585915D9249B9D0500FB6F1C /* MyPageEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditViewController.swift; sourceTree = "<group>"; };
-		5859D514248D2F3E002EAE20 /* SelectedMatchInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMatchInfoData.swift; sourceTree = "<group>"; };
 		5859EB7A2488012300B78FF9 /* MyPagePostedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePostedTableViewCell.swift; sourceTree = "<group>"; };
 		5859EB7B2488012300B78FF9 /* MyPagePostedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPagePostedTableViewCell.xib; sourceTree = "<group>"; };
 		5859EB7F2488036500B78FF9 /* MyPagePostedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePostedViewController.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				580EE341245FBDDB000E0F64 /* PostData.swift */,
-				5859D514248D2F3E002EAE20 /* SelectedMatchInfoData.swift */,
 				580EE347246041CD000E0F64 /* PostViewController.swift */,
 				5863A79724644DED00592DCD /* PostTableViewCell.swift */,
 				5863A79824644DED00592DCD /* PostTableViewCell.xib */,
@@ -433,7 +430,6 @@
 				585AFB8D245EEB4800A3A7C6 /* TabBarController.swift in Sources */,
 				585AFB8B245EC6BD00A3A7C6 /* AlertViewController.swift in Sources */,
 				58C0E3C4249A556C005462CA /* RelatedHomeViewController.swift in Sources */,
-				5859D515248D2F3E002EAE20 /* SelectedMatchInfoData.swift in Sources */,
 				585C39FB2471662100EAEA52 /* GoogleMapsViewController.swift in Sources */,
 				5859EB802488036500B78FF9 /* MyPagePostedViewController.swift in Sources */,
 				58C0E3C1249A418D005462CA /* RelatedPostsTableViewCell.swift in Sources */,

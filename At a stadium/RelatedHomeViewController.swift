@@ -19,19 +19,19 @@ class RelatedHomeViewController: UIViewController {
     @IBOutlet weak var relatedDateLabel: UILabel!
     
     
-    var matchInfoFromHomeVC: SelectedMatchInfoData?
+    var matchInfoFromHomeVC: MatchData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // カテゴリとセクションの表示
-        self.relatedCategorySectionLabel.text = matchInfoFromHomeVC!.categorySection
+        self.relatedCategorySectionLabel.text = "\(matchInfoFromHomeVC!.category!) \(matchInfoFromHomeVC!.section!)"
         
         // ホームチームの表示
-        self.relatedHomeTeamLabel.text = matchInfoFromHomeVC!.homeTeam
+        self.relatedHomeTeamLabel.text = matchInfoFromHomeVC!.homeTeam!
         
         // アウェイチームの表示
-        self.relatedAwayTeamLabel.text = matchInfoFromHomeVC!.awayTeam
+        self.relatedAwayTeamLabel.text = matchInfoFromHomeVC!.awayTeam!
         
         // KICKOFFの表示
         self.relatedDateLabel.text = ""
@@ -42,17 +42,10 @@ class RelatedHomeViewController: UIViewController {
             self.relatedDateLabel.text = "KICKOFF - \(dateAndTime)"
         }
         
-        setmatchInfo(matchInfoFromHomeVC!)
-        
-    }
-    
-    func setmatchInfo(_ selectedMatchInfoData: SelectedMatchInfoData) {
         // スタジアム画像の表示
         relatedStadiumImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        let imageRef = Storage.storage().reference().child(Const.SelectedMatchInfoImagePath).child(selectedMatchInfoData.id + ".jpg")
+        let imageRef = Storage.storage().reference().child(Const.stadiumImagePath).child(matchInfoFromHomeVC!.id + ".jpg")
         relatedStadiumImageView.sd_setImage(with: imageRef)
     }
-    
-    
 
 }

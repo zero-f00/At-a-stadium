@@ -14,6 +14,7 @@ class PostData: NSObject {
     var name: String?
     var caption: String?
     var date: Date?
+    var matchInfoId: String?
     var likes: [String] = []
     var isLiked: Bool = false
     
@@ -29,6 +30,8 @@ class PostData: NSObject {
         
         let timestamp = postDic["date"] as? Timestamp
         self.date = timestamp?.dateValue()
+        
+        self.matchInfoId = postDic["matchInfoId"] as? String
         
         if let likes = postDic["likes"] as? [String] {
             self.likes = likes
