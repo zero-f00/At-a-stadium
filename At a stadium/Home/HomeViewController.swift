@@ -16,7 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // 投稿データを格納する配列
     var postArray: [PostData] = []
     
-    // 試合情報データを格納する配列
+    // 補足情報の試合情報データを格納する配列
     var matchInfoArray: [MatchData] = []
     
 //    // matchCreateViewControllerで作成し、引き継いできた試合情報受け取る変数
@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //    // 試合情報を格納する変数
 //    var matchInfo: MatchData?
     
-    // RelatedHomeViewControllerに試合情報を表示させるための変数
+    // RelatedHomeViewControllerに補足情報となる試合情報を表示させるための変数
     var matchInfoToRelated: MatchData?
     
     var listener: ListenerRegistration!
@@ -141,6 +141,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    // 補足情報となる試合情報の子Viewをタップした時
     @objc func didTapAddMatchInfo(_ sender: UIButton, forEvent event: UIEvent) {
         let touch = event.allTouches?.first
         let point = touch!.location(in: self.tableView)

@@ -19,7 +19,7 @@ class RelatedPostsViewController: UIViewController, UITableViewDataSource, UITab
     // 試合情報データを格納する配列
     var relatedMatchInfoArray: [MatchData] = []
     
-    //
+    // HomeVCから渡してきた補足情報となる試合情報を格納する変数
     var sortMatchInfo: MatchData?
     
     var listener: ListenerRegistration!
@@ -110,12 +110,13 @@ class RelatedPostsViewController: UIViewController, UITableViewDataSource, UITab
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.relatedPostArray.count
+        return relatedPostArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得してデータを設定する
         let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedPostsCell", for: indexPath) as! RelatedPostsTableViewCell
+        cell.setPostData(relatedPostArray[indexPath.row])
         
         for postData in relatedPostArray {
             if postData.id == sortMatchInfo!.id {
@@ -125,5 +126,4 @@ class RelatedPostsViewController: UIViewController, UITableViewDataSource, UITab
         
         return cell
     }
-
 }
