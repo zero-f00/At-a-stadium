@@ -65,4 +65,28 @@ class RelatedPostsTableViewCell: UITableViewCell {
         
     }
     
+    
+    // MatchDataの内容をaddMatchInfoViewに表示
+    func setMatchData(_ matchData: MatchData) {
+//        // カテゴリーとセクションの表示
+//        self.matchInfoCategory.text = "\(matchData.category!) \(matchData.section!)"
+//
+//        // 日付の表示
+//        self.matchInfoDate.text = ""
+//        if let date = matchData.date {
+//            self.dateLabel.text = date.toFuzzy()
+//        }
+//
+//        // ホームチームの表示
+//        self.matchInfoHomeT.text = "\(matchData.homeTeam!)"
+//
+//        // アウェイチームの表示
+//        self.matchInfoAwayT.text = "\(matchData.awayTeam!)"
+//
+//        // スタジアム画像の表示
+//        matchInfoStadiumImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+//        let imageRef = Storage.storage().reference().child(Const.stadiumImagePath).child(matchData.id + ".jpg")
+//        matchInfoStadiumImageView.sd_setImage(with: imageRef)
+    }
+    
 }

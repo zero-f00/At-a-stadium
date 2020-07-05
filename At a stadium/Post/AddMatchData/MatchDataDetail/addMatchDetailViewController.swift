@@ -38,11 +38,11 @@ class addMatchDetailViewController: UIViewController {
         print("DEBUG_PRINT \(String(describing: self.dateLabel.text))")
         
         // ホームチームの表示
-        self.homeTeamLabel.text = matchInfoDetail!.homeTeam!
+        self.homeTeamLabel.text = "\(matchInfoDetail!.homeTeam!)"
         print("DEBUG_PRINT \(String(describing: self.homeTeamLabel.text))")
         
         // アウェイチームの表示
-        self.awayTeamLabel.text = matchInfoDetail!.awayTeam!
+        self.awayTeamLabel.text = "\(matchInfoDetail!.awayTeam!)"
         print("DEBUG_PRINT \(String(describing: self.awayTeamLabel.text))")
         
 //        // スタジアムの表示

@@ -24,6 +24,11 @@ class RelatedHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let relatedHomeViewController = self.storyboard?.instantiateViewController(withIdentifier: "RelatedHomeVC") as! RelatedHomeViewController
+        
+        let relatedPostsViewController = relatedHomeViewController.children[0] as! RelatedPostsViewController
+        relatedPostsViewController.sortMatchInfo = matchInfoFromHomeVC
+        
         // カテゴリとセクションの表示
         self.relatedCategorySectionLabel.text = "\(matchInfoFromHomeVC!.category!) \(matchInfoFromHomeVC!.section!)"
         

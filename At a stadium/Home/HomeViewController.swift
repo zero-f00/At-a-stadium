@@ -127,8 +127,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! PostTableViewCell
         cell.setPostData(postArray[indexPath.row])
         
-        
         let postData = postArray[indexPath.row]
+        
         cell.setPostData(postData)
         
         for matchInfo in matchInfoArray {
@@ -165,8 +165,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         relatedHomeViewController.matchInfoFromHomeVC = matchInfoToRelated
         
         print("DEBUG_PRINT matchInfoFromHomeVCに値を渡す \(String(describing: matchInfoToRelated))")
-        
-        self.dismiss(animated: true, completion: nil)
     }
 
 }
