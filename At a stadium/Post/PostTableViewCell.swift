@@ -20,7 +20,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var commentButton: UIButton!
     @IBOutlet weak var commentLabel: UILabel!
-    
+
     
     @IBOutlet weak var addMatchInfoButton: UIButton!
     @IBOutlet weak var addMatchInfoView: UIView!
@@ -86,11 +86,14 @@ class PostTableViewCell: UITableViewCell {
     func setMatchData(_ matchData: MatchData) {
         // カテゴリーとセクションの表示
         self.matchInfoCategory.text = "\(matchData.category!) \(matchData.section!)"
-
-        // 日付の表示
+        
+        // キックオフの時間の表示
         self.matchInfoDate.text = ""
         if let date = matchData.date {
-            self.dateLabel.text = date.toFuzzy()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm"
+            let dateAndTime = date.formattedDateWith(style: .longDateAndTime)
+            self.matchInfoDate.text = "KICKOFF - \(dateAndTime)"
         }
 
         // ホームチームの表示
