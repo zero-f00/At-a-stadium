@@ -158,7 +158,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         // viewがタップされた時のアクション
-        self.performSegue(withIdentifier: "toRelatedPosts", sender: self)
+        self.performSegue(withIdentifier: "toRelatedHomeVC", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
