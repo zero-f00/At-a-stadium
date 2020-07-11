@@ -724,12 +724,6 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="01P-bn-4ro">
-                                                <rect key="frame" x="0.0" y="316" width="320" height="364"/>
-                                                <connections>
-                                                    <segue destination="TrV-7p-r6q" kind="embed" identifier="" id="mbe-ME-DqO"/>
-                                                </connections>
-                                            </containerView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Jb-3f-iXJ">
                                                 <rect key="frame" x="0.0" y="56" width="320" height="250"/>
                                                 <subviews>
@@ -810,18 +804,22 @@
                                                     <constraint firstAttribute="trailing" secondItem="gl3-pR-RrZ" secondAttribute="trailing" constant="10" id="zN2-mg-kUW"/>
                                                 </constraints>
                                             </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3l7-yT-WrF">
+                                                <rect key="frame" x="0.0" y="306" width="320" height="374"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="01P-bn-4ro" firstAttribute="trailing" secondItem="9Jb-3f-iXJ" secondAttribute="trailing" id="02i-cW-74K"/>
                                             <constraint firstItem="mQQ-Md-JJh" firstAttribute="top" secondItem="JXE-Ep-6iO" secondAttribute="top" id="5zD-kK-BSB"/>
+                                            <constraint firstItem="3l7-yT-WrF" firstAttribute="top" secondItem="9Jb-3f-iXJ" secondAttribute="bottom" id="7BM-Wk-V7m"/>
                                             <constraint firstItem="mQQ-Md-JJh" firstAttribute="leading" secondItem="JXE-Ep-6iO" secondAttribute="leading" id="L3V-hC-co7"/>
+                                            <constraint firstAttribute="trailing" secondItem="3l7-yT-WrF" secondAttribute="trailing" id="XHJ-25-KnD"/>
+                                            <constraint firstItem="3l7-yT-WrF" firstAttribute="leading" secondItem="JXE-Ep-6iO" secondAttribute="leading" id="YoU-Kd-elc"/>
                                             <constraint firstAttribute="trailing" secondItem="mQQ-Md-JJh" secondAttribute="trailing" id="asj-y3-TvP"/>
-                                            <constraint firstItem="01P-bn-4ro" firstAttribute="top" secondItem="9Jb-3f-iXJ" secondAttribute="bottom" constant="10" id="cF6-oF-A7M"/>
+                                            <constraint firstAttribute="bottom" secondItem="3l7-yT-WrF" secondAttribute="bottom" id="pbU-hM-Tzx"/>
                                             <constraint firstItem="9Jb-3f-iXJ" firstAttribute="top" secondItem="mQQ-Md-JJh" secondAttribute="bottom" id="qzp-FG-Ftn"/>
                                             <constraint firstAttribute="trailing" secondItem="9Jb-3f-iXJ" secondAttribute="trailing" id="tyd-3f-R7d"/>
-                                            <constraint firstItem="01P-bn-4ro" firstAttribute="leading" secondItem="9Jb-3f-iXJ" secondAttribute="leading" id="uKe-8d-cBB"/>
-                                            <constraint firstAttribute="bottom" secondItem="01P-bn-4ro" secondAttribute="bottom" id="vj7-on-Ifz"/>
                                             <constraint firstItem="9Jb-3f-iXJ" firstAttribute="leading" secondItem="JXE-Ep-6iO" secondAttribute="leading" id="wtP-bg-Jqy"/>
                                         </constraints>
                                     </view>
@@ -856,11 +854,12 @@
                         <outlet property="relatedHomeTeamLabel" destination="B6V-Fb-Ju8" id="4Rz-7U-6v4"/>
                         <outlet property="relatedStadiumImageView" destination="ykH-nb-RpK" id="2og-Xc-Lo1"/>
                         <outlet property="relatedStadiumLabel" destination="gl3-pR-RrZ" id="s8r-N9-YF3"/>
+                        <outlet property="tableView" destination="3l7-yT-WrF" id="8t3-AK-fvB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZf-BM-qqx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8546" y="985"/>
+            <point key="canvasLocation" x="-8614" y="871"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="3Y8-ko-GaK">
@@ -1850,7 +1849,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="JPy-hs-rCu" id="Ns3-1W-aqO"/>
-                        <segue destination="6VO-WI-arU" kind="show" identifier="toRelatedPosts" id="2lf-bv-0iV"/>
+                        <segue destination="6VO-WI-arU" kind="show" identifier="toRelatedHomeVC" id="lRU-Cc-LVF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Go4-Ln-aD2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1905,36 +1904,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gea-rn-eMH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1328" y="2739"/>
-        </scene>
-        <!--Related Posts View Controller-->
-        <scene sceneID="EhI-8d-QiT">
-            <objects>
-                <viewController storyboardIdentifier="RelatedPostsVC" id="TrV-7p-r6q" customClass="RelatedPostsViewController" customModule="At_a_stadium" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="2AS-eK-Xvq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="364"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Viu-QK-Gzx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="364"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Viu-QK-Gzx" secondAttribute="bottom" id="Dq7-VD-gbX"/>
-                            <constraint firstAttribute="trailing" secondItem="Viu-QK-Gzx" secondAttribute="trailing" id="ZFF-xB-8pu"/>
-                            <constraint firstItem="Viu-QK-Gzx" firstAttribute="top" secondItem="2AS-eK-Xvq" secondAttribute="top" id="ZNS-fP-PVE"/>
-                            <constraint firstItem="Viu-QK-Gzx" firstAttribute="leading" secondItem="2AS-eK-Xvq" secondAttribute="leading" id="hIQ-BG-f8p"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="FL1-dR-Ahj"/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="Viu-QK-Gzx" id="CWV-nI-dF7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AMA-Dq-Ve5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-9336" y="817"/>
         </scene>
     </scenes>
     <resources>
