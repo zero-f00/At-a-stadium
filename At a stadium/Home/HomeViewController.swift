@@ -129,8 +129,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let postData = postArray[indexPath.row]
         
-        cell.setPostData(postData)
-        
         for matchInfo in matchInfoArray {
             if postData.matchInfoId == matchInfo.id {
                 cell.setMatchData(matchInfo)
