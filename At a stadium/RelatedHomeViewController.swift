@@ -2,7 +2,7 @@
 //  RelatedHomeViewController.swift
 //  At a stadium
 //
-//  Created by Yuto Masamura on 2020/06/17.
+//  Created by Yuto Masamura on 202　0/06/17.
 //  Copyright © 2020 Yuto Masamura. All rights reserved.
 //
 
@@ -141,18 +141,20 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return relatedMatchInfoArray.count
+        return relatedPostArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得してデータを設定する
          let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedPostsCell", for: indexPath) as! RelatedPostsTableViewCell
+        
+        let postData = relatedPostArray
 
-        for postData in relatedPostArray {
+        for relatedPostData in relatedPostArray {
             if postData.id == matchInfoFromHomeVC!.id {
-                cell.setPostData(postData)
+                cell.setPostData(relatedPostData)[indexPath.row]
+                break
             }
-            cell.setPostData(relatedPostArray[indexPath.row])
         }
         
         return cell
