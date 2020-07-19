@@ -30,6 +30,9 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
     // 試合情報データを格納する配列
     var relatedMatchInfoArray: [MatchData] = []
     
+    // 選択された補足情報と関連する投稿を格納する配列
+    var relatedPostDataArray: [PostData] = []
+    
     // relatedMatchInfoArrayからIdを取り出したもの
     var postDataIdArray: [String] = []
     
@@ -144,20 +147,16 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return relatedPostArray.count
+        return relatedPostDataArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // セルを取得してデータを設定する
          let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedPostsCell", for: indexPath) as! RelatedPostsTableViewCell
         
-        for postDataIdArray in relatedPostArray.PostData.id {
-            
-        }
-        
-        for relatedPostData in relatedPostArray {
-            if relatedPostArray.id == matchInfoFromHomeVC!.id {
-                cell.setPostData(relatedPostData)
+        for relatedPostDataArray in relatedPostArray {
+            if relatedPostDataArray.id == matchInfoFromHomeVC!.id {
+                cell.setPostData(relatedPostDataArray)
                 break
             }
         }
