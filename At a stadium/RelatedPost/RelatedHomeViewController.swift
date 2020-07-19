@@ -156,7 +156,7 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
         
         for relatedPostDataArray in relatedPostArray {
             if relatedPostDataArray.id == matchInfoFromHomeVC!.id {
-                cell.setPostData(relatedPostDataArray)
+                cell.setPostData(relatedPostDataArray[indexPath.row])
                 break
             }
         }
