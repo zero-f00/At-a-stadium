@@ -30,12 +30,6 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
     // 試合情報データを格納する配列
     var relatedMatchInfoArray: [MatchData] = []
     
-    // 選択された補足情報と関連する投稿を格納する配列
-    var relatedPostDataArray: [PostData] = []
-    
-    // relatedMatchInfoArrayからIdを取り出したもの
-    var postDataIdArray: [String] = []
-    
     var listener: ListenerRegistration!
     
     var matchInfolistener: ListenerRegistration!
@@ -95,7 +89,12 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
                     self.relatedPostArray = querySnapshot!.documents.map { document in
                         print("DEBUG_PRINT: document取得 \(document.documentID)")
                         let postData = PostData(document: document)
-                        return postData
+                        
+                        if postData.matchInfoId == self.matchInfoFromHomeVC!.id {
+                            let relatedPostData = postData
+                        }
+                        return relatedPostData
+                        
                     }
                     // TableViewの表示を更新する
                     self.tableView.reloadData()
@@ -147,21 +146,24 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return relatedPostDataArray.count
+        return relatedPostArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // セルを取得してデータを設定する
+         // セルを取得してデータを設定する
          let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedPostsCell", for: indexPath) as! RelatedPostsTableViewCell
         
-        for relatedPostDataArray in relatedPostArray {
-            if relatedPostDataArray.id == matchInfoFromHomeVC!.id {
-                cell.setPostData(relatedPostDataArray[indexPath.row])
-                break
-            }
-        }
-        
+        cell.setPostData(relatedPostArray[indexPath.row])
         return cell
+        
+        
+//        for relatedPostDataArray in relatedPostArray {
+//            if relatedPostArray == matchInfoFromHomeVC!.id {
+//                cell.setPostData(relatedPostDataArray[indexPath.row])
+//                break
+//            }
+//        }
+        
     }
     
 }
