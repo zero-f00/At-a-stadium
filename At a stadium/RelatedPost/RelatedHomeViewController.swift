@@ -84,18 +84,31 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                         return
                     }
-                    // 最新の情報を取得するための処理
-                    // 取得したdocumentをもとにPostDataを作成し、relatedPostArrayの配列にする。
-                    self.relatedPostArray = querySnapshot!.documents.map { document in
-                        print("DEBUG_PRINT: document取得 \(document.documentID)")
-                        let postData = PostData(document: document)
-                        
-                        if postData.matchInfoId == self.matchInfoFromHomeVC!.id {
-                            let relatedPostData = postData
-                        }
-                        return relatedPostData
-                        
+                    
+//                    取得したdocumentをもとにPostDataを作成し、relatedPostArrayの配列にする。
+//
+//                    ・querySnapshotに最新のデータが入っていて、そのdocumentsプロパティにドキュメント（QueryDocumentSnapshot）の一覧が配列として入っている状態で、このドキュメントをPostDataに変換している。
+//                    ・mapメソッドは全要素に処理を適応する際に使い、今回であればドキュメントを変換したPostDataのすべての処理に対して処理を行っている。
+//                    ・filterメソッドは条件に合う要素を絞り込む処理で、一致したものだけをPostDataとして変換している。
+                    
+                    self.relatedPostArray = querySnapshot!.documents
+                        .map { PostData(document: $0) }
+                        .filter { $0.matchInfoId == self.matchInfoFromHomeVC!.id
                     }
+                    
+                    
+                    // わからなくて、書いてみたコード
+//                    self.relatedPostArray = querySnapshot!.documents.map { document in
+//                        print("DEBUG_PRINT: document取得 \(document.documentID)")
+//                        let postData = PostData(document: document)
+//
+//                        if postData.matchInfoId == self.matchInfoFromHomeVC!.id {
+//                            let relatedPostData = postData
+//                        }
+//                        return relatedPostData
+//
+//                    }
+                    
                     // TableViewの表示を更新する
                     self.tableView.reloadData()
                 }
