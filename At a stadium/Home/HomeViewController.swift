@@ -155,7 +155,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         commentViewController.postData = postData
         
-        //self.performSegue(withIdentifier: "Comment", sender: self)
+        self.performSegue(withIdentifier: "Comment", sender: self)
     }
     
     // 補足情報となる試合情報の子Viewをタップした時
@@ -181,7 +181,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let relatedHomeViewController = segue.destination as! RelatedHomeViewController
         relatedHomeViewController.matchInfoFromHomeVC = matchInfoToRelated
-        
         print("DEBUG_PRINT matchInfoFromHomeVCに値を渡す \(String(describing: matchInfoToRelated))")
     }
 
