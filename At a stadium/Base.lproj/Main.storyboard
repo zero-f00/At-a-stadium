@@ -1761,7 +1761,7 @@
                     <connections>
                         <outlet property="tableView" destination="JPy-hs-rCu" id="Ns3-1W-aqO"/>
                         <segue destination="6VO-WI-arU" kind="show" identifier="toRelatedHomeVC" id="lRU-Cc-LVF"/>
-                        <segue destination="g0d-Rj-Maj" kind="show" identifier="Comment" id="vai-Ju-G7W"/>
+                        <segue destination="g0d-Rj-Maj" kind="show" identifier="toCommentVC" id="vai-Ju-G7W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Go4-Ln-aD2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
