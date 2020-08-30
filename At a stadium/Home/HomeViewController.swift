@@ -136,7 +136,26 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         }
         cell.addMatchInfoButton.addTarget(self, action: #selector(didTapAddMatchInfo), for: .touchUpInside)
+        
+        cell.commentButton.addTarget(self, action: #selector(hundleCommentButton), for: .touchUpInside)
+        
         return cell
+    }
+    
+    @objc func hundleCommentButton(_ sender:UIButton, forEvent event: UIEvent) {
+        print("DEBUG_PRINT: コメントボタンがタップされました。CommentViewControllerに遷移し、タップしたセルの情報を渡す。")
+        
+        let touch = event.allTouches?.first
+        let point = touch!.location(in: self.tableView)
+        let indexPath = tableView.indexPathForRow(at: point)
+        
+        let postData = postArray[indexPath!.row]
+        
+        let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
+        
+        commentViewController.postData = postData
+        
+        //self.performSegue(withIdentifier: "Comment", sender: self)
     }
     
     // 補足情報となる試合情報の子Viewをタップした時

@@ -85,11 +85,14 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
                         return
                     }
                     
-//                    取得したdocumentをもとにPostDataを作成し、relatedPostArrayの配列にする。
-//
-//                    ・querySnapshotに最新のデータが入っていて、そのdocumentsプロパティにドキュメント（QueryDocumentSnapshot）の一覧が配列として入っている状態で、このドキュメントをPostDataに変換している。
-//                    ・mapメソッドは全要素に処理を適応する際に使い、今回であればドキュメントを変換したPostDataのすべての処理に対して処理を行っている。
-//                    ・filterメソッドは条件に合う要素を絞り込む処理で、一致したものだけをPostDataとして変換している。
+                    // 取得したdocumentをもとにPostDataを作成し、relatedPostArrayの配列に代入している。
+                    // documentsはDocumentの配列。このドキュメントをPostDataに変換している。
+                    // mapメソッドは、各要素を変換して新しい配列を生成する。今回であれば、Document -> PostDataに変換する処理を行っている。
+                    // filterメソッドは条件に合う要素を絞り込む処理で、各PostDataの持っているmatchInfoIdを比較の条件に使っている。
+                    
+                    // $0はクロージャの引数名を背負い略したときに自動的に割り振られる変数。引数が3つであれば、$0~$2といったように各番号が割り当てられる。
+                    // mapで$0を使わない場合
+                    // .map { document in PostData(document: document) }
                     
                     self.relatedPostArray = querySnapshot!.documents
                         .map { PostData(document: $0) }

@@ -17,6 +17,7 @@ class PostData: NSObject {
     var matchInfoId: String?
     var likes: [String] = []
     var isLiked: Bool = false
+    var commentText: [String] = []
     
     init(document: QueryDocumentSnapshot) {
         
@@ -42,6 +43,11 @@ class PostData: NSObject {
                 // myidがあれば、いいねしていると認識する
                 self.isLiked = true
             }
+        }
+        
+        // このキーはコメントの内容を保持する配列を保存する
+        if let commentText = postDic["commentsText"] as? [String] {
+            self.commentText = commentText
         }
     }
 }
