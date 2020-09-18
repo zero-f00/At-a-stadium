@@ -30,8 +30,12 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         
         // カスタムセルを登録する
-        let nib = UINib(nibName: "CommentTableViewCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "CommentCell")
+        
+        let nib = UINib(nibName: "CommentVCPostTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "CommentVCPostCell")
+        
+        let nib2 = UINib(nibName: "CommentTableViewCell", bundle: nil)
+        tableView.register(nib2, forCellReuseIdentifier: "CommentCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,17 +76,22 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return commentPostArray.count
+        return commentPostArray.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // セルを取得してデータを設定する
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
-        cell.setCommentPostData(commentPostArray[indexPath.row])
-        
-        return cell
-        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentVCPostCell", for: indexPath) as! CommentVCPostTableViewCell
+            cell.setCommentVCPostData(postData)
+            return cell
+        } else {
+            // セルを取得してデータを設定する
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+            cell2.setCommentPostData(commentPostArray[indexPath.row])
+            
+            return cell2
+        }
     }
     
     @IBAction func handleCommentPostButton(_ sender: Any) {

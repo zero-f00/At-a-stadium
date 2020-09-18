@@ -27,6 +27,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // RelatedHomeViewControllerに補足情報となる試合情報を表示させるための変数
     var matchInfoToRelated: MatchData?
     
+    // CommentVCに渡す投稿データのための変数
+    var toCommentVCPostData: PostData?
+    
     var listener: ListenerRegistration!
     
     var matchInfolistener: ListenerRegistration!
@@ -151,9 +154,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let postData = postArray[indexPath!.row]
         
-        let commentViewController = self.storyboard?.instantiateViewController(withIdentifier: "Comment") as! CommentViewController
-        
-        commentViewController.postData = postData
+        toCommentVCPostData = postData
         
         self.performSegue(withIdentifier: "toCommentVC", sender: self)
     }
@@ -179,10 +180,16 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let relatedHomeViewController = segue.destination as! RelatedHomeViewController
-        relatedHomeViewController.matchInfoFromHomeVC = matchInfoToRelated
         
-        print("DEBUG_PRINT matchInfoFromHomeVCに値を渡す \(String(describing: matchInfoToRelated))")
+        if segue.identifier == "toRelatedHomeVC" {
+            let relatedHomeViewController = segue.destination as! RelatedHomeViewController
+            relatedHomeViewController.matchInfoFromHomeVC = matchInfoToRelated
+            print("DEBUG_PRINT matchInfoFromHomeVCに値を渡す \(String(describing: matchInfoToRelated))")
+        } else if segue.identifier == "toCommentVC" {
+            let commentViewController = segue.destination as! CommentViewController
+            commentViewController.postData = toCommentVCPostData
+        }
+        
     }
 
 }

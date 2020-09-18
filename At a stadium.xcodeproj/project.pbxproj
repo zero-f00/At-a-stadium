@@ -33,6 +33,8 @@
 		5862B1C824642EB300BDFE5D /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5862B1C724642EB300BDFE5D /* Const.swift */; };
 		5863A79924644DED00592DCD /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5863A79724644DED00592DCD /* PostTableViewCell.swift */; };
 		5863A79A24644DED00592DCD /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5863A79824644DED00592DCD /* PostTableViewCell.xib */; };
+		586B0E1A2501401200DE676B /* CommentVCPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586B0E182501401200DE676B /* CommentVCPostTableViewCell.swift */; };
+		586B0E1B2501401200DE676B /* CommentVCPostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586B0E192501401200DE676B /* CommentVCPostTableViewCell.xib */; };
 		5872ADA9249F518B00709424 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5872ADA8249F518B00709424 /* Date.swift */; };
 		587A8EDA249372B200FF7F23 /* Date+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587A8ED9249372B200FF7F23 /* Date+Ex.swift */; };
 		58981A952462FE4F00901217 /* TwitterActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58981A942462FE4F00901217 /* TwitterActivity.swift */; };
@@ -78,6 +80,8 @@
 		5862B1C724642EB300BDFE5D /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		5863A79724644DED00592DCD /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		5863A79824644DED00592DCD /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		586B0E182501401200DE676B /* CommentVCPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentVCPostTableViewCell.swift; sourceTree = "<group>"; };
+		586B0E192501401200DE676B /* CommentVCPostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentVCPostTableViewCell.xib; sourceTree = "<group>"; };
 		5872ADA8249F518B00709424 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		587A8ED9249372B200FF7F23 /* Date+Ex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Ex.swift"; sourceTree = "<group>"; };
 		58981A942462FE4F00901217 /* TwitterActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterActivity.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				585A178924F409B300151F6E /* CommentViewController.swift */,
 				583EF40524EEC5D00016810B /* CommentTableViewCell.swift */,
 				583EF40624EEC5D00016810B /* CommentTableViewCell.xib */,
+				586B0E182501401200DE676B /* CommentVCPostTableViewCell.swift */,
+				586B0E192501401200DE676B /* CommentVCPostTableViewCell.xib */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				586B0E1B2501401200DE676B /* CommentVCPostTableViewCell.xib in Resources */,
 				585CF96B245E9E8800189144 /* LaunchScreen.storyboard in Resources */,
 				58B0E90B246ADD4A0066749D /* addMatchDataTableViewCell.xib in Resources */,
 				5863A79A24644DED00592DCD /* PostTableViewCell.xib in Resources */,
@@ -432,6 +439,7 @@
 			files = (
 				580EE348246041CD000E0F64 /* PostViewController.swift in Sources */,
 				5872ADA9249F518B00709424 /* Date.swift in Sources */,
+				586B0E1A2501401200DE676B /* CommentVCPostTableViewCell.swift in Sources */,
 				585915DA249B9D0500FB6F1C /* MyPageEditViewController.swift in Sources */,
 				5859EB7C2488012300B78FF9 /* MyPagePostedTableViewCell.swift in Sources */,
 				5861632A247A609C002953DF /* addMatchDetailViewController.swift in Sources */,

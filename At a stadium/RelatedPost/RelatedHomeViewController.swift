@@ -33,12 +33,12 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
     var listener: ListenerRegistration!
     
     var matchInfolistener: ListenerRegistration!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 500
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -101,16 +101,16 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
                     
                     
                     // わからなくて、書いてみたコード
-//                    self.relatedPostArray = querySnapshot!.documents.map { document in
-//                        print("DEBUG_PRINT: document取得 \(document.documentID)")
-//                        let postData = PostData(document: document)
-//
-//                        if postData.matchInfoId == self.matchInfoFromHomeVC!.id {
-//                            let relatedPostData = postData
-//                        }
-//                        return relatedPostData
-//
-//                    }
+                    //                    self.relatedPostArray = querySnapshot!.documents.map { document in
+                    //                        print("DEBUG_PRINT: document取得 \(document.documentID)")
+                    //                        let postData = PostData(document: document)
+                    //
+                    //                        if postData.matchInfoId == self.matchInfoFromHomeVC!.id {
+                    //                            let relatedPostData = postData
+                    //                        }
+                    //                        return relatedPostData
+                    //
+                    //                    }
                     
                     // TableViewの表示を更新する
                     self.tableView.reloadData()
@@ -128,7 +128,7 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
                     self.relatedMatchInfoArray = querySnapshot!.documents.map { document in
                         print("DEBUG_PRINT: document取得 \(document.documentID)")
                         let matchData = MatchData(document: document)
-
+                        
                         print("--------------------------")
                         print(matchData.id)
                         print("カテゴリセクション\(String(describing: matchData.category))")
@@ -136,7 +136,7 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
                         print("ホーム\(String(describing: matchData.homeTeam))")
                         print("アウェイ\(String(describing: matchData.awayTeam))")
                         print("デート\(String(describing: matchData.date))")
-
+                        
                         return matchData
                     }
                     // TableViewの表示を更新する
@@ -159,26 +159,26 @@ class RelatedHomeViewController: UIViewController, UITableViewDataSource, UITabl
             }
         }
     }
-
-
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return relatedPostArray.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         // セルを取得してデータを設定する
-         let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedPostsCell", for: indexPath) as! RelatedPostsTableViewCell
+        // セルを取得してデータを設定する
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RelatedPostsCell", for: indexPath) as! RelatedPostsTableViewCell
         
         cell.setPostData(relatedPostArray[indexPath.row])
         return cell
         
         
-//        for relatedPostDataArray in relatedPostArray {
-//            if relatedPostArray == matchInfoFromHomeVC!.id {
-//                cell.setPostData(relatedPostDataArray[indexPath.row])
-//                break
-//            }
-//        }
+        //        for relatedPostDataArray in relatedPostArray {
+        //            if relatedPostArray == matchInfoFromHomeVC!.id {
+        //                cell.setPostData(relatedPostDataArray[indexPath.row])
+        //                break
+        //            }
+        //        }
         
     }
     
