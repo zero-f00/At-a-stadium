@@ -15,6 +15,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var TextField: UITextField!
     
+    // HomeVCで選択された投稿データ
     var postData: PostData!
     
     // 投稿データを格納する配列
@@ -30,16 +31,17 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         
         // カスタムセルを登録する
-        
+        // 投稿データ用のnib
         let nib = UINib(nibName: "CommentVCPostTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "CommentVCPostCell")
         
+        // コメント表示用のnib
         let nib2 = UINib(nibName: "CommentTableViewCell", bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: "CommentCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
         
         if Auth.auth().currentUser != nil {
@@ -52,24 +54,23 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                         print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                         return
                     }
-                    // 最新の情報を取得するための処理
-                    // 取得したdocumentをもとにPostDataを作成し、postArrayの配列にする。
-                    self.commentPostArray = querySnapshot!.documents.map { document in
-                        print("DEBUG_PRINT: document取得 \(document.documentID)")
-                        let postData = PostData(document: document)
-                        return postData
+                    
+                    self.commentPostArray = querySnapshot!.documents
+                        .map { PostData(document: $0) }
+                        .filter { $0.id == self.postData!.id
                     }
+                    
                     // TableViewの表示を更新する
                     self.tableView.reloadData()
                 }
             }
         } else {
-            // ログアウト未（またはログアウト済み）
             if listener != nil {
-                // listener登録済みなら削除してmatchInfoArrayをクリアする
+                // listener登録済みなら削除してpostArrayをクリアする
                 listener.remove()
                 listener = nil
                 commentPostArray = []
+                
                 tableView.reloadData()
             }
         }
@@ -87,10 +88,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
             return cell
         } else {
             // セルを取得してデータを設定する
-            let cell2 = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
-            cell2.setCommentPostData(commentPostArray[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CommentCell", for: indexPath) as! CommentTableViewCell
+            cell.setCommentPostData(commentPostArray[indexPath.row - 1])
             
-            return cell2
+            return cell
         }
     }
     
