@@ -23,7 +23,9 @@ extension Date {
 
         var result = String()
 
-        if diffSec < 60 {
+        if diffSec == 0 {
+            result = "1秒前"
+        } else if diffSec < 60 {
             result = "\(diffSec)秒前"
         } else if diffSec < 3600 {
             result = "\(diffSec/60)分前"

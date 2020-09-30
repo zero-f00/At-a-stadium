@@ -54,7 +54,6 @@ class PostViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         print("PostVC-viewWillAppearが呼ばれました。")
         
         print("DEBUG_PRINT PostVCで値は\(String(describing: matchInfo))です。")

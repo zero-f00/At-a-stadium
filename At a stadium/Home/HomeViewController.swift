@@ -13,6 +13,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     // 投稿データを格納する配列
     var postArray: [PostData] = []
     
@@ -189,7 +190,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let commentViewController = segue.destination as! CommentViewController
             commentViewController.postData = toCommentVCPostData
         }
-        
     }
 
 }
