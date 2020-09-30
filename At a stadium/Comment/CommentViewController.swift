@@ -10,10 +10,10 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
-class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var TextField: UITextField!
+    @IBOutlet weak var UITextView: UITextView!
     
     // HomeVCで選択された投稿データ
     var postData: PostData!
@@ -30,6 +30,8 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         
+        UITextView.delegate = self
+        
         // カスタムセルを登録する
         // 投稿データ用のnib
         let nib = UINib(nibName: "CommentVCPostTableViewCell", bundle: nil)
@@ -38,6 +40,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         // コメント表示用のnib
         let nib2 = UINib(nibName: "CommentTableViewCell", bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: "CommentCell")
+        
+        // キーボードのframeに変化があった場合にメソッドを呼ぶ
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,10 +90,6 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentPostArray.count + 1
     }
@@ -108,7 +110,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func handleCommentPostButton(_ sender: Any) {
-        let commentTextField = TextField.text!
+        let commentTextField = UITextView.text!
         
         // commentsを更新する
         if let myid = Auth.auth().currentUser?.displayName {
@@ -125,10 +127,30 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                 let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
                 postRef.updateData(["commentsText": updateValueComment])
                 
+                UITextView.text! = ""
+                
                 SVProgressHUD.showSuccess(withStatus: "投稿しました。")
                 
                 self.dismiss(animated: true, completion: nil)
             }
         }
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            } else {
+                let suggestionHeight = self.view.frame.origin.y + keyboardSize.height
+                self.view.frame.origin.y -= suggestionHeight
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide() {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
 }
+
