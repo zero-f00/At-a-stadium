@@ -40,9 +40,15 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.register(nib2, forCellReuseIdentifier: "CommentCell")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
+        
+        tabBarController?.tabBar.isHidden = true
         
         if Auth.auth().currentUser != nil {
             // ログイン済み
@@ -58,7 +64,9 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.commentPostArray = querySnapshot!.documents
                         .map { PostData(document: $0) }
                         .filter { $0.id == self.postData!.id
-                    }
+                        }
+                    
+                    
                     
                     // TableViewの表示を更新する
                     self.tableView.reloadData()
@@ -74,6 +82,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                 tableView.reloadData()
             }
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -56,7 +56,9 @@ class PostViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         print("PostVC-viewWillAppearが呼ばれました。")
+        
         print("DEBUG_PRINT PostVCで値は\(String(describing: matchInfo))です。")
+        
         // 試合情報の追加がされているかどうかを判定する
         
         if matchInfo != nil {
@@ -104,6 +106,10 @@ class PostViewController: UIViewController {
             matchInfoUIView.isHidden = true
         }
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     func setMatchData(_ matchData: MatchData) {
