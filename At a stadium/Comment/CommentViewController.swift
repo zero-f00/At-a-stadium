@@ -13,7 +13,7 @@ import SVProgressHUD
 class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var UITextView: UITextView!
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var dockView: UIView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var dockViewHeightConstrain: NSLayoutConstraint!
@@ -33,7 +33,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         
-        UITextView.delegate = self
+        textView.delegate = self
         
         // カスタムセルを登録する
         // 投稿データ用のnib
@@ -45,7 +45,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.register(nib2, forCellReuseIdentifier: "CommentCell")
         
         // キャプションを入力するテキストエリアをからの状態にしておく
-        UITextView.text = ""
+        textView.text = ""
         
         // キーボードのframeに変化があった場合にメソッドを呼ぶ
         let center = NotificationCenter.default
@@ -53,9 +53,12 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         
         center.addObserver(self, selector: #selector(handleKeyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        // 画面のタップ検出するジェスチャーを設定
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector(("tableViewTapped")))
-        self.view.addGestureRecognizer(tapGesture)
+//        // TableViewのドラッグ開始時にキーボードを閉じる。
+//        self.tableView.keyboardDismissMode = .onDrag
+        
+        // TableViewを下にスクロールするのに合わせてキーボードを閉じる。
+        self.tableView.keyboardDismissMode = .interactive
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -122,9 +125,9 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func handleCommentPostButton(_ sender: Any) {
-        self.UITextView.endEditing(true)
+        self.textView.endEditing(true)
         
-        let commentTextField = UITextView.text!
+        let commentTextField = textView.text!
         
         // commentsを更新する
         if let myid = Auth.auth().currentUser?.displayName {
@@ -141,7 +144,10 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                 let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
                 postRef.updateData(["commentsText": updateValueComment])
                 
-                UITextView.text! = ""
+                textView.text! = ""
+                
+//                // TableViewを一番下までスクロールする
+//                tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
                 
                 SVProgressHUD.showSuccess(withStatus: "投稿しました。")
                 
@@ -171,14 +177,4 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    func tableViewTapped() {
-        self.UITextView.endEditing(true)
-    }
-    
 }
-

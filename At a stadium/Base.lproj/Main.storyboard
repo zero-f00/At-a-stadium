@@ -272,11 +272,11 @@
                     <navigationItem key="navigationItem" id="Ybq-Mm-XvO"/>
                     <size key="freeformSize" width="320" height="660"/>
                     <connections>
-                        <outlet property="UITextView" destination="gAo-dP-xPm" id="Hyy-YJ-V1j"/>
                         <outlet property="dockView" destination="0TJ-gB-Akr" id="pmn-jI-sba"/>
                         <outlet property="dockViewHeightConstrain" destination="2Ac-RP-QQq" id="L6Y-w0-1gf"/>
                         <outlet property="sendButton" destination="1DH-Ec-nJj" id="HX1-eF-8Xw"/>
                         <outlet property="tableView" destination="4gJ-Wm-2PY" id="a5t-b5-hiY"/>
+                        <outlet property="textView" destination="gAo-dP-xPm" id="wUq-L9-ssc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHR-sJ-7qP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
