@@ -240,7 +240,7 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="handleCommentPostButton:" destination="g0d-Rj-Maj" eventType="touchUpInside" id="Xmh-Td-E9u"/>
+                                            <action selector="handleCommentPostButton:" destination="g0d-Rj-Maj" eventType="touchUpInside" id="djj-gL-Ks3"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -272,11 +272,11 @@
                     <navigationItem key="navigationItem" id="Ybq-Mm-XvO"/>
                     <size key="freeformSize" width="320" height="660"/>
                     <connections>
-                        <outlet property="UITextView" destination="gAo-dP-xPm" id="IPF-Lw-NJg"/>
-                        <outlet property="dockView" destination="0TJ-gB-Akr" id="kr8-Oc-BnK"/>
-                        <outlet property="dockViewHeightConstrain" destination="2Ac-RP-QQq" id="cQI-4F-mHd"/>
-                        <outlet property="sendButton" destination="1DH-Ec-nJj" id="25X-Kw-IAT"/>
-                        <outlet property="tableView" destination="4gJ-Wm-2PY" id="Vgs-EL-tpH"/>
+                        <outlet property="UITextView" destination="gAo-dP-xPm" id="Hyy-YJ-V1j"/>
+                        <outlet property="dockView" destination="0TJ-gB-Akr" id="pmn-jI-sba"/>
+                        <outlet property="dockViewHeightConstrain" destination="2Ac-RP-QQq" id="L6Y-w0-1gf"/>
+                        <outlet property="sendButton" destination="1DH-Ec-nJj" id="HX1-eF-8Xw"/>
+                        <outlet property="tableView" destination="4gJ-Wm-2PY" id="a5t-b5-hiY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHR-sJ-7qP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

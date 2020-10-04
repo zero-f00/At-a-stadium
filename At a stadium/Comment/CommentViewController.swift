@@ -12,7 +12,6 @@ import SVProgressHUD
 
 class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var UITextView: UITextView!
     @IBOutlet weak var dockView: UIView!
@@ -123,7 +122,6 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func handleCommentPostButton(_ sender: Any) {
-        
         self.UITextView.endEditing(true)
         
         let commentTextField = UITextView.text!
@@ -151,7 +149,6 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
             }
         }
     }
-    
     
     //キーボード表示される寸前
     @objc func handleKeyboardWillShowNotification(_ notification: Notification) {
