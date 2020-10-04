@@ -12,8 +12,12 @@ import SVProgressHUD
 
 class CommentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var UITextView: UITextView!
+    @IBOutlet weak var dockView: UIView!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var dockViewHeightConstrain: NSLayoutConstraint!
     
     // HomeVCで選択された投稿データ
     var postData: PostData!
@@ -41,9 +45,18 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         let nib2 = UINib(nibName: "CommentTableViewCell", bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: "CommentCell")
         
+        // キャプションを入力するテキストエリアをからの状態にしておく
+        UITextView.text = ""
+        
         // キーボードのframeに変化があった場合にメソッドを呼ぶ
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(handleKeyboardWillShowNotification), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        center.addObserver(self, selector: #selector(handleKeyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // 画面のタップ検出するジェスチャーを設定
+        let tapGesture = UITapGestureRecognizer(target: self, action: Selector(("tableViewTapped")))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -110,6 +123,9 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     @IBAction func handleCommentPostButton(_ sender: Any) {
+        
+        self.UITextView.endEditing(true)
+        
         let commentTextField = UITextView.text!
         
         // commentsを更新する
@@ -136,21 +152,36 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
-            } else {
-                let suggestionHeight = self.view.frame.origin.y + keyboardSize.height
-                self.view.frame.origin.y -= suggestionHeight
-            }
-        }
+    
+    //キーボード表示される寸前
+    @objc func handleKeyboardWillShowNotification(_ notification: Notification) {
+        //キーボードの大きさを取得
+        let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        UIView.animate(withDuration: 0.25, animations: {
+            
+            //キーボードの高さの分DockViewの高さをプラス
+            self.dockViewHeightConstrain.constant = (keyboardRect?.size.height)! + 60
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
-    @objc func keyboardWillHide() {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
+    //キーボードが隠れる寸前
+    @objc func handleKeyboardWillHideNotification(_ notification: Notification) {
+        UIView.animate(withDuration: 0.25, animations: {
+            
+            //DockViewの高さを元の高さに戻す
+            self.dockViewHeightConstrain.constant = 60
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func tableViewTapped() {
+        self.UITextView.endEditing(true)
+    }
+    
 }
 
