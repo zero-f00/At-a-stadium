@@ -47,6 +47,8 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         // キャプションを入力するテキストエリアをからの状態にしておく
         textView.text = ""
         
+        self.textView.becomeFirstResponder()
+        
         // キーボードのframeに変化があった場合にメソッドを呼ぶ
         let center = NotificationCenter.default
         center.addObserver(self, selector: #selector(handleKeyboardWillShowNotification), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
@@ -62,6 +64,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        // tabBarを表示
         tabBarController?.tabBar.isHidden = false
     }
     
@@ -69,6 +72,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
         
+        // tabBarを非表示
         tabBarController?.tabBar.isHidden = true
         
         if Auth.auth().currentUser != nil {
