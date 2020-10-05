@@ -35,6 +35,8 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         
         textView.delegate = self
         
+        self.dockView.backgroundColor = .red
+        
         // カスタムセルを登録する
         // 投稿データ用のnib
         let nib = UINib(nibName: "CommentVCPostTableViewCell", bundle: nil)
@@ -55,8 +57,8 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         
         center.addObserver(self, selector: #selector(handleKeyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-//        // TableViewのドラッグ開始時にキーボードを閉じる。
-//        self.tableView.keyboardDismissMode = .onDrag
+        //        // TableViewのドラッグ開始時にキーボードを閉じる。
+        //        self.tableView.keyboardDismissMode = .onDrag
         
         // TableViewを下にスクロールするのに合わせてキーボードを閉じる。
         self.tableView.keyboardDismissMode = .interactive
@@ -150,8 +152,8 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
                 
                 textView.text! = ""
                 
-//                // TableViewを一番下までスクロールする
-//                tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                //                // TableViewを一番下までスクロールする
+                //                tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
                 
                 SVProgressHUD.showSuccess(withStatus: "投稿しました。")
                 
@@ -182,3 +184,6 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         }, completion: nil)
     }
 }
+
+
+
