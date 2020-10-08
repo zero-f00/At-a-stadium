@@ -17,6 +17,7 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var dockView: UIView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var dockViewHeightConstrain: NSLayoutConstraint!
+    @IBOutlet weak var textViewHeightConstrain: NSLayoutConstraint!
     
     // HomeVCで選択された投稿データ
     var postData: PostData!
@@ -27,6 +28,8 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     // Firestoreのリスナー
     var listener: ListenerRegistration!
     
+    var isObserving = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +37,6 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         
         textView.delegate = self
-        
-        self.dockView.backgroundColor = .red
         
         // カスタムセルを登録する
         // 投稿データ用のnib
@@ -46,19 +47,21 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
         let nib2 = UINib(nibName: "CommentTableViewCell", bundle: nil)
         tableView.register(nib2, forCellReuseIdentifier: "CommentCell")
         
+        dockView.backgroundColor = UIColor.red
+        
         // キャプションを入力するテキストエリアをからの状態にしておく
         textView.text = ""
         
-        self.textView.becomeFirstResponder()
+//        self.textView.becomeFirstResponder()
         
-        // キーボードのframeに変化があった場合にメソッドを呼ぶ
-        let center = NotificationCenter.default
-        center.addObserver(self, selector: #selector(handleKeyboardWillShowNotification), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+                // キーボードのframeに変化があった場合にメソッドを呼ぶ
+                let center = NotificationCenter.default
+                center.addObserver(self, selector: #selector(handleKeyboardWillShowNotification), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
-        center.addObserver(self, selector: #selector(handleKeyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+                center.addObserver(self, selector: #selector(handleKeyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        //        // TableViewのドラッグ開始時にキーボードを閉じる。
-        //        self.tableView.keyboardDismissMode = .onDrag
+                // TableViewのドラッグ開始時にキーボードを閉じる。
+                self.tableView.keyboardDismissMode = .onDrag
         
         // TableViewを下にスクロールするのに合わせてキーボードを閉じる。
         self.tableView.keyboardDismissMode = .interactive
@@ -68,11 +71,29 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     override func viewWillDisappear(_ animated: Bool) {
         // tabBarを表示
         tabBarController?.tabBar.isHidden = false
+        
+        if(!isObserving) {
+            // Viewの表示時にキーボード表示・非表示を監視するObserverを登録する
+            let center = NotificationCenter.default
+            center.addObserver(self, selector: #selector(handleKeyboardWillShowNotification), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+            
+            center.addObserver(self, selector: #selector(handleKeyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+            isObserving = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("DEBUG_PRINT: viewWillAppear")
+        
+        if(!isObserving) {
+            // Viewの表示時にキーボード表示・非表示を監視するObserverを登録する
+            let center = NotificationCenter.default
+            center.addObserver(self, selector: #selector(handleKeyboardWillShowNotification), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+            
+            center.addObserver(self, selector: #selector(handleKeyboardWillHideNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
+            isObserving = true
+        }
         
         // tabBarを非表示
         tabBarController?.tabBar.isHidden = true
@@ -164,26 +185,50 @@ class CommentViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //キーボード表示される寸前
     @objc func handleKeyboardWillShowNotification(_ notification: Notification) {
-        //キーボードの大きさを取得
-        let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
-        UIView.animate(withDuration: 0.25, animations: {
-            
-            //キーボードの高さの分DockViewの高さをプラス
-            self.dockViewHeightConstrain.constant = (keyboardRect?.size.height)! + 60
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+        
+//        // キーボード表示時の動作をここに記述する
+//        let rect = ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey])! as! NSValue).cgRectValue
+//        let duration:TimeInterval = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as! Double)
+//        UIView.animate(withDuration: duration, animations: {
+//            let transform = CGAffineTransform(translationX: 0, y: -rect.size.height)
+//            self.view.transform = transform
+//        },completion:nil)
+        
+        
+                //キーボードの大きさを取得
+                let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+                UIView.animate(withDuration: 0.25, animations: {
+        
+                    //キーボードの高さの分DockViewの高さをプラス
+                    self.dockViewHeightConstrain.constant = (keyboardRect?.size.height)! + 60
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
     }
     
     //キーボードが隠れる寸前
     @objc func handleKeyboardWillHideNotification(_ notification: Notification) {
-        UIView.animate(withDuration: 0.25, animations: {
-            
-            //DockViewの高さを元の高さに戻す
-            self.dockViewHeightConstrain.constant = 60
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+        
+//        // キーボード消滅時の動作をここに記述する
+//        let duration = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as! Double)
+//        UIView.animate(withDuration: duration, animations:{
+//            self.view.transform = CGAffineTransform.identity
+//        },
+//        completion:nil)
+        
+        
+                UIView.animate(withDuration: 0.25, animations: {
+        
+                    //DockViewの高さを元の高さに戻す
+                    self.dockViewHeightConstrain.constant = 60
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
     }
+    
+//    func textViewDidChange(_ textView: UITextView) {
+//        let maxHeight = 80.0  // 入力フィールドの最大サイズ
+//        if(textView.frame.size.height.native < maxHeight) {
+//            let size:CGSize = textView.sizeThatFits(textView.frame.size)
+//            textViewHeightConstrain.constant = size.height
+//        }
+//    }
 }
-
-
-
